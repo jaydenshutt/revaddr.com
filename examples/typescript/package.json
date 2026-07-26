@@ -1,0 +1,20 @@
+{
+  "name": "revaddr-typescript-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Typed RevAddr reverse-geocode sample (Node 18+)",
+  "type": "module",
+  "scripts": {
+    "start": "tsx reverse.ts",
+    "batch": "tsx batch.ts",
+    "start:node": "node --experimental-strip-types reverse.ts"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

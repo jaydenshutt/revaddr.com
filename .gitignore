@@ -1,0 +1,63 @@
+# Secrets (never commit API keys)
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+package-lock.json
+npm-debug.log*
+
+# Rust
+target/
+
+# Dart tooling (keep examples/dart/bin source)
+.dart_tool/
+.packages
+pubspec.lock
+
+# Elixir
+_build/
+deps/
+*.ez
+
+# TypeScript / Node
+*.tsbuildinfo
+
+# C / C++ build outputs (compiled binaries named reverse/batch)
+*.o
+*.obj
+*.exe
+*.out
+examples/c/reverse
+examples/c/batch
+examples/cpp/reverse
+examples/cpp/batch
+
+# C# / .NET build outputs only (do not ignore source bin/ folders like Dart)
+examples/csharp/bin/
+examples/csharp/obj/
+*.user
+*.suo
+
+# Go build output
+examples/go/bin/
+
+# Java / Kotlin build artifacts
+*.class
+examples/kotlin/reverse.jar
+examples/**/*.jar
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

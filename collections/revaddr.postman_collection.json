@@ -1,0 +1,170 @@
+{
+  "info": {
+    "_postman_id": "revaddr-public-samples",
+    "name": "RevAddr API",
+    "description": "Public reverse-geocoding samples for https://revaddr.com\n\nSet collection variable `apiKey` to your key (or use environment variable REVADDR_API_KEY when running Newman).\n\nBase URL default: https://api.revaddr.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.revaddr.com"
+    },
+    {
+      "key": "apiKey",
+      "value": "YOUR_API_KEY"
+    },
+    {
+      "key": "lat",
+      "value": "38.8977"
+    },
+    {
+      "key": "lon",
+      "value": "-77.0365"
+    }
+  ],
+  "item": [
+    {
+      "name": "Reverse (GET)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{apiKey}}",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/v1/reverse?lat={{lat}}&lon={{lon}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["v1", "reverse"],
+          "query": [
+            { "key": "lat", "value": "{{lat}}" },
+            { "key": "lon", "value": "{{lon}}" }
+          ]
+        },
+        "description": "Single reverse geocode. Response shape: {\"result\": {...}}."
+      },
+      "response": []
+    },
+    {
+      "name": "Reverse (POST JSON)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{apiKey}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lat\": 38.8977,\n  \"lon\": -77.0365\n}\n"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v1/reverse",
+          "host": ["{{baseUrl}}"],
+          "path": ["v1", "reverse"]
+        },
+        "description": "Same as GET reverse, JSON body. Optional field: radius_m."
+      },
+      "response": []
+    },
+    {
+      "name": "Batch reverse",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{apiKey}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"points\": [\n    {\"lat\": 38.8977, \"lon\": -77.0365},\n    {\"lat\": 37.7749, \"lon\": -122.4194},\n    {\"lat\": 40.7128, \"lon\": -74.006}\n  ]\n}\n"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v1/reverse/batch",
+          "host": ["{{baseUrl}}"],
+          "path": ["v1", "reverse", "batch"]
+        },
+        "description": "Up to 100 points. Response: {\"results\": [...]} . Each point costs 1 unit."
+      },
+      "response": []
+    },
+    {
+      "name": "Usage",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{apiKey}}",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/v1/usage",
+          "host": ["{{baseUrl}}"],
+          "path": ["v1", "usage"]
+        },
+        "description": "Account usage / remaining units for the API key."
+      },
+      "response": []
+    },
+    {
+      "name": "OpenAPI meta",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/v1/meta",
+          "host": ["{{baseUrl}}"],
+          "path": ["v1", "meta"]
+        },
+        "description": "Public product meta (pricing display fields, endpoints). Interactive docs: {{baseUrl}}/docs"
+      },
+      "response": []
+    }
+  ]
+}

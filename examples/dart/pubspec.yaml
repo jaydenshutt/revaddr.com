@@ -1,0 +1,10 @@
+name: revaddr_reverse_example
+description: Minimal RevAddr reverse-geocode sample for Dart / Flutter backends.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  http: ^1.2.0
