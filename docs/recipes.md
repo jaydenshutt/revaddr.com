@@ -42,7 +42,7 @@ See `examples/python/batch.py`, `examples/node/batch.mjs`, `examples/curl/batch.
 
 ## 4. Mobile GPS (Kotlin / Swift / Dart)
 
-Recommended architecture:
+**Recommended architecture:** keep API keys on infrastructure you control.
 
 ```text
 Phone GPS  -->  Your backend  -->  RevAddr API
@@ -51,7 +51,9 @@ Phone GPS  -->  Your backend  -->  RevAddr API
               API key stays on server
 ```
 
-Client-side keys in mobile binaries get extracted. If you must call from the device, use a restricted key, low balance, and monitor abuse.
+We **do not recommend** placing API keys on end-user devices (mobile apps, browsers, IoT firmware, or other clients that can be reverse-engineered, re-signed, or otherwise compromised). Keys embedded in distributed binaries are routinely extracted.
+
+If you choose to call RevAddr directly from a device anyway, that is entirely at your own risk. **You are responsible for safeguarding your keys and for all usage billed to those keys**, including unauthorized or abusive traffic after a key is leaked. Mitigations such as low remaining balance, rotation, and monitoring reduce impact but do not transfer that responsibility.
 
 ## 5. Map click / pin drop
 
